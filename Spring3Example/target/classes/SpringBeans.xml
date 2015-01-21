@@ -1,0 +1,91 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+
+	<bean id="helloBean" class="com.mkyong.core.HelloWorld">
+		<property name="name" value="Mkyong" />
+	</bean>
+    <!--<bean class="com.mkyong.core.InitHelloWorld"></bean>-->
+
+    <bean id="beanTest" class="com.mkyong.core.CunstructorBeanTest">
+        <constructor-arg index="0" value="12"/>
+        <constructor-arg index="1" value="25"/>
+        <constructor-arg index="2" value="Sajith Vijesekara"/>
+    </bean>
+
+    <bean id="collection" class="com.mkyong.core.CollectionInjection">
+
+        <property name="addressList">
+            <list>
+                <value>APPLE</value>
+                <value>windows</value>
+                <value>Android</value>
+            </list>
+        </property>
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="dell"></entry>
+                <entry key="2" value="dell1"></entry>
+                <entry key="3" value="dell2"></entry>
+            </map>
+        </property>
+        <property name="addressSet">
+            <set>
+                <value>Name</value>
+                <value>Address</value>
+                <value>Age</value>
+            </set>
+        </property>
+        <property name="addressProp">
+            <props>
+                <prop key="name">Sajith Vijesekara</prop>
+                <prop key="age">255</prop>
+                <prop key="id">0715902607</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="com.mkyong.core.samplesautowired.AutowiredExample" id="auto1">
+    </bean>
+    <bean class="com.mkyong.core.samplesautowired.Details" id="details">
+    </bean>
+
+
+
+    <bean id="custom_product" class="com.mkyong.core.qualifier.SmsCustomers">
+
+    </bean>
+
+    <bean class="com.mkyong.core.qualifier.Product" id="dialog_product">
+        <property name="id" value="1000123"></property>
+        <property name="productName" value="SEND_SMS_DIALOG"></property>
+        <property name="productCode" value="DG001"></property>
+    </bean>
+
+    <bean class="com.mkyong.core.qualifier.Product" id="eti_product">
+        <property name="id" value="1000123"></property>
+        <property name="productName" value="SEND_SMS_ETSALAT"></property>
+        <property name="productCode" value="ET001"></property>
+    </bean>
+
+    <bean class="com.mkyong.core.events.StartEvent"></bean>
+    <bean class="com.mkyong.core.events.StopEvent"></bean>
+    <bean id="event_test" class="com.mkyong.core.events.EventTest">
+        <property name="name" value="Sajith Event Test"></property>
+    </bean>
+
+
+    <bean class="com.mkyong.core.customEvent.CustomEventPublisher" id="customEventPublisher"></bean>
+    <bean class="com.mkyong.core.customEvent.CustomEventHandler"></bean>
+
+
+
+   <!-- <import resource="database/Datasource_spring.xml" />
+    <import resource="customer/Customer.xml" />-->
+</beans>
