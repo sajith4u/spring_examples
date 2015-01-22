@@ -1,11 +1,12 @@
 package com.mkyong.core;
 
-import com.mkyong.core.customEvent.CustomEventPublisher;
 import com.sajith.db.DatabaseTransactions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
+import java.nio.file.*;
 import java.util.List;
 
 public class App {
@@ -44,12 +45,41 @@ public class App {
         /**
          *  Custom Event
          */
-        CustomEventPublisher customEventPublisher= (CustomEventPublisher)context.getBean("customEventPublisher");
+       /* CustomEventPublisher customEventPublisher= (CustomEventPublisher)context.getBean("customEventPublisher");
         customEventPublisher.publish();
         customEventPublisher.publish();
-        customEventPublisher.publish();
+        customEventPublisher.publish();*/
 
-	}
+
+        /**
+         *  component Anotations
+         */
+       /* Organization organization=(Organization)context.getBean("organization");
+        organization.partyStartTime();
+
+        Person person=(Person)context.getBean("person");
+        person.partyStartTime();*/
+
+        /**
+         *  HashMap example
+         */
+
+       /* HashMapExample hashMapExample= new HashMapExample();
+        HashMap<Integer,PersonDetails>details = hashMapExample.add();
+        System.out.println(details.get(1).getDetails());*/
+
+
+        /**
+         * Enum Example
+         */
+        /*EnumExample enumExample= new EnumExample();
+        enumExample.setState(EnumExample.NetworkState.SUCCESS);
+        System.out.println(enumExample.getState());*/
+
+
+
+
+    }
 
 
     /**
@@ -79,5 +109,28 @@ public class App {
         collectionInjection.getAddressMap();
         collectionInjection.getAddressSet();
         collectionInjection.getAddressProp();
+    }
+
+    public void waitforFile() throws IOException,
+            InterruptedException {
+        Path faxFolder = Paths.get("/home/sajith/tmp/juju/tmpcheck");
+        WatchService watchService = FileSystems.getDefault().newWatchService();
+        faxFolder.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
+
+        boolean valid = true;
+        do {
+            WatchKey watchKey = watchService.take();
+
+            for (WatchEvent event : watchKey.pollEvents()) {
+                WatchEvent.Kind kind = event.kind();
+                if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
+                    String fileName = event.context().toString();
+                    System.out.println("File Created:" + fileName);
+                }
+            }
+            valid = watchKey.reset();
+
+        } while (valid);
+
     }
 }
