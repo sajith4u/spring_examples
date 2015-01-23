@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0" errors="0" skipped="0" tests="2" name="com.mkyong.core.AppTest">
+<testsuite failures="0" time="0.015" errors="0" skipped="0" tests="1" name="com.mkyong.core.springTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/sajith/install/jdk1.7.0_45/jre/lib/amd64"/>
@@ -60,6 +60,5 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0" classname="com.mkyong.core.AppTest" name="testApp"/>
-  <testcase time="0" classname="com.mkyong.core.AppTest" name="testAsertions"/>
+  <testcase time="0.015" classname="com.mkyong.core.springTest" name="testBase64Encode"/>
 </testsuite>

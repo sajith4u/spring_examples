@@ -76,6 +76,16 @@ public class App {
         enumExample.setState(EnumExample.NetworkState.SUCCESS);
         System.out.println(enumExample.getState());*/
 
+        /**
+         * Unit Testing example
+         */
+       /* UnitTesting unitTesting= new UnitTesting();
+        unitTesting.printTestmMessage("Sajith");*/
+
+
+
+
+
 
 
 
@@ -126,6 +136,8 @@ public class App {
                 if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
                     String fileName = event.context().toString();
                     System.out.println("File Created:" + fileName);
+                }else{
+
                 }
             }
             valid = watchKey.reset();

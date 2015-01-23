@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="shedularMe" class="com.mkyong.core.shedular.ShedularTsak"></bean>
+    <bean id="shedulatTask" class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+        <property name="targetObject" ref="shedularMe"/>
+        <property name="targetMethod" value="ShelularMethod"/>
+    </bean>
+
+    <bean id="timerTask"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask">
+        <property name="timerTask" ref="shedulatTask" />
+        <property name="delay" value="100" />
+        <property name="period" value="600" />
+    </bean>
+
+    <bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+        <property name="scheduledTimerTasks">
+            <list>
+                <ref local="timerTask" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

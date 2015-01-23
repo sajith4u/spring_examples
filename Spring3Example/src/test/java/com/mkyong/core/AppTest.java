@@ -35,4 +35,19 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+
+    /**
+     *  Test Junit Assertions
+     */
+    @org.junit.Test
+    public void testAsertions(){
+        String name= new String("Sajith");
+        String name2= new String("Sajith");
+        int age=27;
+        int age1=28;
+        assertEquals(name,name2);
+        assertTrue(age<age1);
+
+    }
 }
