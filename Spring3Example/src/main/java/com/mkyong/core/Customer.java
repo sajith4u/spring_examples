@@ -33,10 +33,10 @@ public class Customer {
 
     private int age;
 
-    public Customer(int id,String name,int age){
-        this.cusId=id;
-        this.name=name;
-        this.age=age;
+    public Customer(int id, String name, int age) {
+        this.cusId = id;
+        this.name = name;
+        this.age = age;
 
     }
 }

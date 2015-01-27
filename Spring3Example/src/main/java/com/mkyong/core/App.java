@@ -1,5 +1,6 @@
 package com.mkyong.core;
 
+import com.mkyong.core.regex.RegexExample;
 import com.sajith.db.DatabaseTransactions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,12 +11,12 @@ import java.nio.file.*;
 import java.util.List;
 
 public class App {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
-				"SpringBeans.xml");
+                "SpringBeans.xml");
 
 		/*HelloWorld obj = (HelloWorld) context.getBean("helloBean");
-		obj.printHello();*/
+        obj.printHello();*/
 
        /* CunstructorBeanTest cunstructorBeanTest= (CunstructorBeanTest) context.getBean("beanTest");
         cunstructorBeanTest.PrintMessage();*/
@@ -82,45 +83,57 @@ public class App {
        /* UnitTesting unitTesting= new UnitTesting();
         unitTesting.printTestmMessage("Sajith");*/
 
-
-
-
-
-
+        /**
+         * Java regex example
+         */
+        RegexExample regexExample = new RegexExample();
+       // regexExample.regexMatches();
+        //regexExample.regexFindExample();
+        //regexExample.findAndReplaceRegex();
+        regexExample.checkDecimal();
 
 
     }
 
 
     /**
-     *  All Db related codes
+     * All Db related codes
+     *
      * @param context
      */
-    public void DbTransActions(ApplicationContext context){
-        DatabaseTransactions databaseTransactions= (DatabaseTransactions)context.getBean("customerDAO");
+    public void DbTransActions(ApplicationContext context) {
+        DatabaseTransactions databaseTransactions = (DatabaseTransactions) context.getBean("customerDAO");
         Customer customer = new Customer(22, "Vijesekara", 50);
         databaseTransactions.insert(customer);
 
-        Customer customer1= databaseTransactions.findId(22);
-        System.out.println("Name : "+customer1.getName());
-        System.out.println("ID : "+customer1.getCusId());
-        System.out.println("Age : "+customer1.getAge());
+        Customer customer1 = databaseTransactions.findId(22);
+        System.out.println("Name : " + customer1.getName());
+        System.out.println("ID : " + customer1.getCusId());
+        System.out.println("Age : " + customer1.getAge());
     }
 
 
     /**
-     *  All collections related codes
+     * All collections related codes
+     *
      * @param context
      */
-    public void colelctionExamples(ApplicationContext context){
-        CollectionInjection collectionInjection=(CollectionInjection) context.getBean("collection");
+    public void colelctionExamples(ApplicationContext context) {
+        CollectionInjection collectionInjection = (CollectionInjection) context.getBean("collection");
 
-        List names= collectionInjection.getAddressList();
+        List names = collectionInjection.getAddressList();
         collectionInjection.getAddressMap();
         collectionInjection.getAddressSet();
         collectionInjection.getAddressProp();
     }
 
+
+    /**
+     * wait for file
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void waitforFile() throws IOException,
             InterruptedException {
         Path faxFolder = Paths.get("/home/sajith/tmp/juju/tmpcheck");
@@ -136,7 +149,7 @@ public class App {
                 if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
                     String fileName = event.context().toString();
                     System.out.println("File Created:" + fileName);
-                }else{
+                } else {
 
                 }
             }
