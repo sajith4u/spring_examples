@@ -1,6 +1,6 @@
 package com.mkyong.core;
 
-import com.mkyong.core.regex.RegexExample;
+import com.mkyong.core.CunstructorBean.CunstructorTest;
 import com.sajith.db.DatabaseTransactions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
@@ -86,13 +87,20 @@ public class App {
         /**
          * Java regex example
          */
-        RegexExample regexExample = new RegexExample();
+        /*RegexExample regexExample = new RegexExample();
        // regexExample.regexMatches();
         //regexExample.regexFindExample();
         //regexExample.findAndReplaceRegex();
-        regexExample.checkDecimal();
+        regexExample.checkDecimal();*/
 
 
+        CunstructorTest cunstructorTest = (CunstructorTest) context.getBean("cuns");
+        Map<String, Float>  map= cunstructorTest.getName();
+        System.out.println("Name : "+map);
+
+        for(int x=0;x<map.size();x++){
+          System.out.println("Name : "+ x +" "+ map.get(String.valueOf(x+1)));
+        }
     }
 
 
